@@ -1,0 +1,75 @@
+// Override default variables before the import
+// you can open the bootstrap.scss module and check any available variables.
+$primary: #FD2D01;
+$secondary: #FFD7D7;
+$success: #198754;
+$info: #0dcaf0;
+$warning: #ffc107;
+$danger: #dc3545;
+$light: #f8f9fa;
+$dark: #4E5166;
+
+//custom color to be mapped
+$accent : #da6d25;
+
+// this is used to map colors. change accordingly.
+$theme-colors: (
+  primary: $primary,
+  secondary: $secondary,
+  success: $success,
+  info: $info,
+  warning: $warning,
+  danger: $danger,
+  light: $light,
+  dark: $dark,
+// add any additional color below
+  accent: $accent,
+// now bg-accent,btn-accent,etc.. can be called
+);
+
+$body-bg: lighten($dark, 10%);
+$border-color: darken($dark, 15%);
+
+$input-border-color: darken($dark, 15%);
+
+$header-bg: $dark;
+
+// Import Bootstrap and its default variables
+@import '~bootstrap/scss/bootstrap.scss';
+
+
+body{
+    font-family: 'Lato', sans-serif !important;
+}
+
+.header {
+    background-color: $header-bg;
+}
+
+.vh-1 {
+    height: 1vh;
+}
+
+.vh-5 {
+    height: 5vh;
+}
+
+.vh-10 {
+    height: 10vh;
+}
+
+.vh-15 {
+    height: 15vh;
+}
+
+.vh-25 {
+    height: 25vh;
+}
+
+.vh-50 {
+    height: 50vh;
+}
+
+.vh-85 {
+    height: 85vh;
+}
