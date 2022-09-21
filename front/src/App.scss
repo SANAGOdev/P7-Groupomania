@@ -14,17 +14,17 @@ $accent : #da6d25;
 
 // this is used to map colors. change accordingly.
 $theme-colors: (
-  primary: $primary,
-  secondary: $secondary,
-  success: $success,
-  info: $info,
-  warning: $warning,
-  danger: $danger,
-  light: $light,
-  dark: $dark,
-// add any additional color below
-  accent: $accent,
-// now bg-accent,btn-accent,etc.. can be called
+    primary: $primary,
+    secondary: $secondary,
+    success: $success,
+    info: $info,
+    warning: $warning,
+    danger: $danger,
+    light: $light,
+    dark: $dark,
+    // add any additional color below
+    accent: $accent,
+    // now bg-accent,btn-accent,etc.. can be called
 );
 
 $body-bg: lighten($dark, 10%);
@@ -38,12 +38,16 @@ $header-bg: $dark;
 @import '~bootstrap/scss/bootstrap.scss';
 
 
-body{
+body {
     font-family: 'Lato', sans-serif !important;
 }
 
 .header {
     background-color: $header-bg;
+}
+
+.modal-content {
+    border: none
 }
 
 .vh-1 {

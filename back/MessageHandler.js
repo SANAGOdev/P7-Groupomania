@@ -2,6 +2,8 @@ exports.sucess =            (res) => res.status(200).json({ message: "Sucess" })
 
 exports.unhandledError =    (res) => res.status(500).json({ message: "Unhandled Error, contact an administrator" });
 
+exports.alreadyExist =      (res) => res.status(401).json({ message: "Email or Username are already used." });
+
 exports.invalidUsername =   (res) => res.status(400).json({ message: "Username is invalid" });
 exports.invalidEmail =      (res) => res.status(400).json({ message: "Email is invalid" });
 exports.invalidPassword =   (res) => res.status(400).json({ message: "Password is invalid" });

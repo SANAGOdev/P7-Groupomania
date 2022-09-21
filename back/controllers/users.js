@@ -18,7 +18,6 @@ exports.list = (req, res, next) => {
 		});
 }
 
-
 exports.knowToken = (req, res, next) => {
 	ErrorHandler.sucess(res);
 }
@@ -37,7 +36,7 @@ exports.signup = (req, res, next) => {
 
 			user.save() //sauvegarde de l'utilsateur dans la base de donnée
 				.then(() => ErrorHandler.sucess(res))
-				.catch(() => ErrorHandler.unhandledError(res)); //renvoie une erreur dans le cas échéant
+				.catch(() => ErrorHandler.alreadyExist(res)); //renvoie une erreur dans le cas échéant
 		})
 		.catch(() => ErrorHandler.bcryptError(res)); //renvoie une erreur dans le cas échéant
 };

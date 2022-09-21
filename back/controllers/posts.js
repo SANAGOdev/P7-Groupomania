@@ -8,9 +8,9 @@ const Post = require("../models/Post"); //import de la librairie bcrypt
 const ErrorHandler = require("../MessageHandler");
 const User = require("../models/User");
 
-const redux = require("redux");
+const redux = require("@reduxjs/toolkit")
 
-function reducer(state = false, action) {
+function updater(state = false, action) {
     switch (action.type) {
         case "set":
             return action.payload;
@@ -19,11 +19,11 @@ function reducer(state = false, action) {
     }
 }
 
-const store = redux.createStore(reducer);
+const store = redux.configureStore({ reducer: updater });
 
-let machin = true;
+let update = true;
 setInterval(() => {
-    if(machin === true)
+    if (update === true)
         store.dispatch({ type: "set", payload: true })
 }, 500);
 
@@ -34,7 +34,7 @@ exports.list = (req, res, next) => {
                 res.status(200).json(posts);
             })
             .catch(err => ErrorHandler.unhandledError(res));
-    
+
     const disable = store.subscribe(() => {
         if (store.getState() === true) {
             Post.find({})
@@ -42,7 +42,7 @@ exports.list = (req, res, next) => {
                     res.status(200).json(posts);
                 })
                 .catch(err => ErrorHandler.unhandledError(res)) //Sometime error
-                .finally(() => { store.dispatch({ type: "set", payload: false }); machin = false; disable(); });
+                .finally(() => { store.dispatch({ type: "set", payload: false }); update = false; disable(); });
         }
     });
 }
@@ -76,7 +76,7 @@ exports.addPost = (req, res, next) => {
         .save()
         .then(() => ErrorHandler.sucess(res))
         .catch((err) => res.status(500).json(err)) //renvoie une erreur dans le cas échéant
-        .finally(() => machin = true);
+        .finally(() => update = true);
 }
 
 exports.deletePost = (req, res, next) => {
@@ -101,7 +101,7 @@ exports.deletePost = (req, res, next) => {
                 .catch(() => ErrorHandler.unhandledError(res));
         })
         .catch(() => ErrorHandler.unhandledError(res))
-        .finally(() => machin = true);
+        .finally(() => update = true);
 }
 
 exports.like = (req, res, next) => {
@@ -157,7 +157,7 @@ exports.like = (req, res, next) => {
             console.warn(err);
             ErrorHandler.unhandledError(res);
         })
-        .finally(() => machin = true);
+        .finally(() => update = true);
 }
 
 exports.addComent = (req, res, next) => {
@@ -171,5 +171,5 @@ exports.addComent = (req, res, next) => {
     Post.findByIdAndUpdate({ _id: id }, { $push: { comments: { userId, comment } } })
         .then(() => ErrorHandler.sucess(res))
         .catch(() => ErrorHandler.unhandledError(res))
-        .finally(() => machin = true);
+        .finally(() => update = true);
 }
