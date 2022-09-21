@@ -6,7 +6,7 @@ export function signUpRequest(payload, navigate, errorTrigger) {
     axios.post(`${process.env.REACT_APP_API_URL}api/auth/signup`, payload)
         .then((res) => {
             navigate(`/signin`);
-        }).catch(err => errorTrigger(`Signup Error`, err.response.data.message));
+        }).catch(err => errorTrigger(`Login Error`, err.response.data.message));
 }
 
 
