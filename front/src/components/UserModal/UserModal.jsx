@@ -49,11 +49,11 @@ export default function UserModal(props) {
                     <Row className="g-0 w-100">
                         <Button
                             className="col border-0 rounded-0" size="lg"
-                            variant={location.pathname === "/signin" ? c[0] : c[1]} tyep="submit" onClick={() => navigate("/signin")}> {/*() => tab === 1 && setTab(0)*/}
+                            variant={location.pathname === "/signin" ? c[0] : c[1]} tyep="submit" onClick={() => navigate("/signin")}>
                             Sign In
                         </Button>
                         <Button className="col border-0 rounded-0" size="lg"
-                            variant={location.pathname === "/signup" ? c[0] : c[1]} onClick={() => navigate("/signup")}> {/*() => tab === 0 && setTab(1)*/}
+                            variant={location.pathname === "/signup" ? c[0] : c[1]} onClick={() => navigate("/signup")}>
                             Sign Up
                         </Button>
                     </Row>
